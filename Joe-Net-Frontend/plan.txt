@@ -1,0 +1,22 @@
+this will be a simple social media app.
+we will first implement a version with no follows, where everyone's content will be shown in chronological order.
+this will have a database.
+It should probably be in SQL since later on we can add follows which create relationships. We can try mongoDB later.
+We will need a REST API for this.
+we will also need to create accounts, and allow people to log in.
+this could be done with cookies, but not right now. At the moment, you will be logged out when you close the page.
+
+Users will be able to like posts. They will also be able to dislike posts
+Users will be able to sort their feed by number of likes.
+A title and some text will be visible in each post.
+the author account will be visible in posts
+Users will also be able to write posts 
+
+There will be a header bar with a drop-down menu to access features
+posts will be displayed in a simple descending slide
+
+maybe later we can add images to posts
+we can also add follows later
+
+This might take a while but hopefully it won't be too bad
+

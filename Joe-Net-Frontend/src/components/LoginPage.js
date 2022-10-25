@@ -1,31 +1,50 @@
 import { useState } from 'react';
 import SignUpPage from './SignUpPage';
 
-const LoginPage = () => {
+const LoginPage = (Props) => {
 	const [displaySignUpPage, setDisplaySignUpPage] = useState(false);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [error, setError] = useState(false)
 
 	function submit(e) {
 		e.preventDefault();
-		//send data to rest api on backend, then receive response and redirect user
+		fetch(`http://localhost:5000/login?email=${email}&password=${password}`)
+		.then(response => {
+			if (response.status === 200) {
+				return response.json();
+			} else {
+				setError(true)
+			}
+		})
+		.then(jsonResponse => {
+			if (jsonResponse !== undefined) {
+				console.log(jsonResponse);
+				Props.changePage(jsonResponse)
+			}
+		})
+		.catch(err => {
+			console.log(err)
+			setError(true)
+		})
 	}
 
 	if (!displaySignUpPage) {
 		return (
 			<div className='loginPage'>
-				<h1>Log in</h1>
-				<form onSubmit={(e) => submit(e)}>
+				<h1 class="mainHeader">Log in</h1>
+				<form  class="loginForm" onSubmit={(e) => submit(e)}>
 					<input type='text' placeholder='email address' onChange={(e) => setEmail(e.target.value)}></input>
 					<input type='password' placeholder='password' onChange={(e) => setPassword(e.target.value)}></input>
 					<input type="submit"></input>
+					<button className='signUpButton' onClick={() => setDisplaySignUpPage(true)}>Create New Account</button>
 				</form>
-				<button className='signUpButton' onClick={() => setDisplaySignUpPage(true)}>Create New Account</button>
+				{error ? <h2 className="error">error while requesting data</h2> : null}
 			</div>
 		);
 	} else {
 		return (
-			<SignUpPage />
+			<SignUpPage changePage={Props.changePage}/>
 		)
 	}
 };

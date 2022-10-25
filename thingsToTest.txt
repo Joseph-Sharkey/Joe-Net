@@ -1,0 +1,7 @@
+does sending null in json actually work
+does testing for response.rows[0] === undefined work
+does not returning a value from a .then result in the next .then not executing
+answer: it doesn't 
+the solution: 
+throw errors from all .then statements that won't allow the next to execute
+otherwise test for whether next value is undefined
