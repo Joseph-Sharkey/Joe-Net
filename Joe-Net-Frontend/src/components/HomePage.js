@@ -29,12 +29,14 @@ const HomePage = (Props) => {
 
 	return (
 		<div className="homepage">
-			<h1 className="mainPageHeader">Posts</h1>
+			<h1 className="mainPageHeader postHeader">Posts</h1>
+			<div className="postsDiv">
 			{posts.map(post => {
 				return (
 					<Post title={post.title} content={post.content} ts={post.ts} author={post.author} key={5} user_id={Props.user_id} anotherProp={post.post_id}/> 
 				)
 			})}
+			</div>
 			{error ? <h3>error while requesting data from server</h3> : null}
 		</div>
 	);

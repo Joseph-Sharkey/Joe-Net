@@ -131,14 +131,16 @@ const Post = (Props) => {
 
 	return (
 		<div className="post">
-			<h2>{Props.title}</h2>
-			<p>{Props.content}</p>
+			<h2 className="postComponentTitle">{Props.title}</h2>
+			<p className="postComponentContent">{Props.content}</p>
 			<div>
-				<h3>{author.username}</h3>
-				{isFollowing ? <button onClick={unfollow}>Following</button> : <button onClick={follow}>Follow</button>}
-				<button onClick={likePost}>Like post</button>
-				<button onClick={dislikePost}>Dislike post</button>
-				<p className='likes'>{likes}</p>
+				<h3 className="postAuthor">{author.username}</h3>
+				<div className="buttonsDiv">
+					<p className='likes'>{likes}</p>
+					<button className="opinionButton likeButton" onClick={likePost}>Like</button>
+					<button className="opinionButton dislikeButton" onClick={dislikePost}>Dislike</button>
+					{isFollowing ? <button className="postButton unfollowButton" onClick={unfollow}>Following</button> : <button className="postButton followButton" onClick={follow}>Follow</button>}
+				</div>
 			</div>
 		</div>
 	)

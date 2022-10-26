@@ -30,7 +30,7 @@ function App() {
         <CreatePostPage user_id={user_id} submitFunction={() => setPage('homePage')}/>
         <HomePage user_id={user_id}/>
         <div className='sidebar'>
-          <button onClick={() => setPage("personalPage")}>View posts from people you follow</button>
+          <button className="personalPageButton" onClick={() => setPage("personalPage")}>View posts from people you follow</button>
         </div>
       </div>
     );

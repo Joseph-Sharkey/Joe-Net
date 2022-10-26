@@ -27,14 +27,15 @@ const PersonalPage = (Props) => {
 	}, []) 
 
 	return (
-		<div>
+		<div className="personalPageDiv">
 			<h1>Posts from people you are following</h1>
+			<div className="personalPostsDiv" />
 			{posts.map(post => {
 				return (
 					<Post title={post.title} content={post.content} ts={"timestamp"} author={post.author} key={post.post_id} user_id={Props.user_id} anotherProp={post.post_id}/>
 				)
 			})}
-			<button onClick={Props.changePageFunction}>Return to main page</button>
+			<button className="homepageReturnButton"onClick={Props.changePageFunction}>Return home</button>
 			{error ? <h3>error requesting data from the server</h3> : null}
 		</div>
 	);
